@@ -730,8 +730,10 @@ Panel {
         clip: true
         boundsBehavior: Flickable.StopAtBounds
         flickableDirection: Flickable.VerticalFlick
-        interactive: contentHeight > height
+        // KineticWheel does the wheel scrolling; see KineticWheel.qml.
+        interactive: false
         ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+        KineticWheel { id: panelWheel; flickable: panelFlick }
 
         Column {
           id: column
@@ -1016,7 +1018,8 @@ Panel {
               reuseItems: true
               boundsBehavior: Flickable.StopAtBounds
               flickableDirection: Flickable.VerticalFlick
-              interactive: contentHeight > height
+              // KineticWheel does the wheel scrolling; see KineticWheel.qml.
+              interactive: false
               // Qt resets contentY whenever a JS-array model is reassigned,
               // and any poll where a peer changed publishes a new array — so
               // without this a background refresh scrolls the list to the top
@@ -1027,6 +1030,7 @@ Panel {
               function rememberPosition() { rememberedY = contentY }
               onContentYChanged: if (moving || dragging) rememberedY = contentY
               onModelChanged: contentY = Math.max(0, Math.min(rememberedY, Math.max(0, contentHeight - height)))
+              KineticWheel { flickable: peerList; outer: panelWheel; onScrolled: peerList.rememberPosition() }
               ScrollBar.vertical: ScrollBar {
                 policy: ScrollBar.AsNeeded
                 onPressedChanged: if (!pressed) peerList.rememberPosition()
