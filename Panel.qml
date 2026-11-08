@@ -514,9 +514,13 @@ Panel {
 
   function scrollCursorIntoView() {
     if (focusSection === "peers" && peerList && filteredPeers.length > 0) {
-      peerList.positionViewAtIndex(Math.max(0, Math.min(peerIndex, filteredPeers.length - 1)), ListView.Contain)
+      var index = Math.max(0, Math.min(peerIndex, filteredPeers.length - 1))
+      peerList.positionViewAtIndex(index, ListView.Contain)
       peerList.rememberPosition()
-      scrollItemIntoView(peerList)
+      // Bring just the selected row into the panel, not the whole list: the
+      // list is taller than most of the panel, and making all of it fit
+      // throws the panel to wherever the list happens to end.
+      Qt.callLater(function() { scrollItemIntoView(peerList.itemAtIndex(index) || peerList) })
     } else if (focusSection === "exitNodes" && exitNodeColumn && exitNodeIndex >= 0 && exitNodeIndex < exitNodeColumn.children.length) scrollItemIntoView(exitNodeColumn.children[exitNodeIndex])
     else if (focusSection === "header") scrollItemIntoView(hero)
     else if (focusSection === "self") scrollItemIntoView(selfRow)
@@ -535,11 +539,13 @@ Panel {
     if (mullvadRegionColumn && mullvadRegionIndex >= 0 && mullvadRegionIndex < mullvadRegionColumn.children.length) scrollItemIntoView(mullvadRegionColumn.children[mullvadRegionIndex])
   }
 
-  function setPeerCursor(index) {
+  // The pointer only moves the highlight. Scrolling to follow it would pull
+  // the panel back under the mouse every time the user scrolls past a row.
+  function setPeerCursor(index, fromPointer) {
     cursorActive = true
     focusSection = "peers"
     peerIndex = index
-    scrollCursorIntoView()
+    if (fromPointer !== true) scrollCursorIntoView()
   }
 
   // The file picker takes over from here, so get the panel out of the way.
@@ -557,11 +563,11 @@ Panel {
     openCopyMenuFor(selectedPeer(), peerList.itemAtIndex(peerIndex))
   }
 
-  function setExitNodeCursor(index) {
+  function setExitNodeCursor(index, fromPointer) {
     cursorActive = true
     focusSection = "exitNodes"
     exitNodeIndex = index
-    scrollCursorIntoView()
+    if (fromPointer !== true) scrollCursorIntoView()
   }
 
   function setAccountCursor(index) {
@@ -600,9 +606,6 @@ Panel {
     // list looks like machines are missing.
     peerSearch.text = ""
   }
-  onPeerIndexChanged: scrollCursorIntoView()
-  onExitNodeIndexChanged: scrollCursorIntoView()
-  onMullvadRegionIndexChanged: if (mullvadPickerOpen) scrollMullvadRegionCursorIntoView()
   onFilteredMullvadRegionsChanged: ensureCursor()
 
   Service {
@@ -1510,7 +1513,7 @@ Panel {
       acceptedButtons: Qt.LeftButton
       hoverEnabled: true
       cursorShape: Qt.ArrowCursor
-      onContainsMouseChanged: if (containsMouse) root.setPeerCursor(peerRow.rowIndex)
+      onContainsMouseChanged: if (containsMouse) root.setPeerCursor(peerRow.rowIndex, true)
     }
 
     RowLayout {
@@ -1715,7 +1718,7 @@ Panel {
       anchors.fill: parent
       hoverEnabled: true
       cursorShape: Qt.PointingHandCursor
-      onEntered: root.setExitNodeCursor(exitNodeRow.rowIndex)
+      onEntered: root.setExitNodeCursor(exitNodeRow.rowIndex, true)
       onClicked: root.chooseExitNode(exitNodeRow.peer)
     }
 
