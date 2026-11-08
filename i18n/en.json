@@ -1,0 +1,52 @@
+{
+  "section.account": "ACCOUNT",
+  "section.accountOf": "ACCOUNT · %1",
+  "account.add": "Add account…",
+  "account.logout": "Log out",
+  "account.logoutConfirm": "Press again to log out",
+  "account.admin": "Admin console…",
+  "section.thisDevice": "THIS DEVICE",
+  "self.keyExpiry": "Key expires %1",
+  "section.devices": "NETWORK DEVICES",
+  "section.devicesCount": "NETWORK DEVICES · %1",
+  "section.devicesFiltered": "NETWORK DEVICES · %1 OF %2",
+  "devices.mine": "My devices",
+  "devices.tagged": "Tagged devices",
+  "devices.otherUser": "Other users",
+  "peer.offline": "Offline",
+  "peer.lastSeenMinutes": {
+    "one": "Offline · seen %1 minute ago",
+    "other": "Offline · seen %1 minutes ago"
+  },
+  "peer.lastSeenHours": {
+    "one": "Offline · seen %1 hour ago",
+    "other": "Offline · seen %1 hours ago"
+  },
+  "peer.lastSeenDays": {
+    "one": "Offline · seen %1 day ago",
+    "other": "Offline · seen %1 days ago"
+  },
+  "section.exitNodes": "EXIT NODES",
+  "exit.none": "None",
+  "exit.recommended": "Recommended",
+  "exit.allowLan": "Allow local network access",
+  "exit.allowLanHelp": "Reach your LAN while traffic goes through an exit node",
+  "exit.runAsExitNode": "Run exit node",
+  "exit.runAsExitNodeHelp": "Offer this device as an exit node to the tailnet",
+  "section.prefs": "PREFERENCES",
+  "prefs.dns": "Use Tailscale DNS settings",
+  "prefs.dnsHelp": "MagicDNS and the DNS servers set in the admin console",
+  "prefs.subnets": "Use Tailscale subnets",
+  "prefs.subnetsHelp": "Reach subnets other devices advertise",
+  "prefs.incoming": "Allow incoming connections",
+  "prefs.incomingHelp": "Off blocks every connection from other devices (shields up)",
+  "section.about": "ABOUT",
+  "about.version": "Tailscale %1",
+  "about.updateAvailable": "Update available: %1",
+  "about.changelog": "View the changelog",
+  "about.bugReport": "Bug report",
+  "about.bugReportHelp": "Create an ID to give Tailscale support",
+  "about.bugReportRunning": "Creating…",
+  "about.bugReportFailed": "Couldn't create a bug report",
+  "about.bugReportCopied": "Copied %1"
+}

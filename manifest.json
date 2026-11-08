@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "mooma-0750.tailscale-desktop",
+  "name": "Tailscale Desktop",
+  "version": "1.0.0",
+  "author": "Reiya Mitsuzono",
+  "license": "MIT",
+  "description": "Tailscale in the Omarchy bar, laid out like the Windows and macOS clients: account, this device, network devices, exit nodes, preferences, and about.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Tailscale Desktop",
+    "description": "Everything the Windows and macOS Tailscale menus offer, in the same order.",
+    "category": "Network",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "refreshIntervalSec": 30
+    },
+    "schema": [
+      {
+        "key": "refreshIntervalSec",
+        "type": "integer",
+        "label": "Refresh interval (seconds)",
+        "min": 5,
+        "max": 3600,
+        "step": 5,
+        "defaultValue": 30
+      }
+    ]
+  }
+}

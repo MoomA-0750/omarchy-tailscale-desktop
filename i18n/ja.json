@@ -1,0 +1,49 @@
+{
+  "section.account": "アカウント",
+  "section.accountOf": "アカウント · %1",
+  "account.add": "アカウントを追加…",
+  "account.logout": "ログアウト",
+  "account.logoutConfirm": "もう一度押すとログアウトします",
+  "account.admin": "管理コンソール…",
+  "section.thisDevice": "このデバイス",
+  "self.keyExpiry": "キーの有効期限 %1",
+  "section.devices": "ネットワーク上のデバイス",
+  "section.devicesCount": "ネットワーク上のデバイス · %1",
+  "section.devicesFiltered": "ネットワーク上のデバイス · %2 台中 %1 台",
+  "devices.mine": "自分のデバイス",
+  "devices.tagged": "タグ付きデバイス",
+  "devices.otherUser": "他のユーザー",
+  "peer.offline": "オフライン",
+  "peer.lastSeenMinutes": {
+    "other": "オフライン · %1 分前"
+  },
+  "peer.lastSeenHours": {
+    "other": "オフライン · %1 時間前"
+  },
+  "peer.lastSeenDays": {
+    "other": "オフライン · %1 日前"
+  },
+  "section.exitNodes": "出口ノード",
+  "exit.none": "なし",
+  "exit.recommended": "おすすめ",
+  "exit.allowLan": "ローカルネットワークへのアクセスを許可",
+  "exit.allowLanHelp": "出口ノードを使っている間も LAN につなぐ",
+  "exit.runAsExitNode": "出口ノードとして動作",
+  "exit.runAsExitNodeHelp": "このデバイスを tailnet の出口ノードにする",
+  "section.prefs": "設定",
+  "prefs.dns": "Tailscale の DNS 設定を使う",
+  "prefs.dnsHelp": "MagicDNS と管理コンソールで決めた DNS サーバー",
+  "prefs.subnets": "Tailscale のサブネットを使う",
+  "prefs.subnetsHelp": "他のデバイスが公開しているサブネットにつなぐ",
+  "prefs.incoming": "着信接続を許可",
+  "prefs.incomingHelp": "オフにすると他のデバイスからの接続をすべて拒否（shields up）",
+  "section.about": "情報",
+  "about.version": "Tailscale %1",
+  "about.updateAvailable": "アップデートがあります: %1",
+  "about.changelog": "変更履歴を見る",
+  "about.bugReport": "バグレポート",
+  "about.bugReportHelp": "Tailscale のサポートに伝える ID を作る",
+  "about.bugReportRunning": "作成中…",
+  "about.bugReportFailed": "バグレポートを作れませんでした",
+  "about.bugReportCopied": "%1 をコピーしました"
+}
